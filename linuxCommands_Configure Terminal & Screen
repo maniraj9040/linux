@@ -1,0 +1,30 @@
+5. Linux Commands To Configure Terminal & Screen.
+	5.1. The screen command.
+		It might now be available on your system by default. So, to install it either use apt or yum as per the distribution you are 			using.
+		
+		1. Start a screen session as the current user.
+			$ screen -x
+			
+		2. Reattach to a screen session.
+			$ screen -r
+			
+		3. Record a terminal session.
+			$ script file.out 2> file.rec
+			
+		4. Play back a recorded terminal session.
+			$ scriptreplay file.rec file.out
+			
+	5.2. Some Useful Terminal Command Shortcuts.
+		1. Open a new terminal.	
+			Press CTRL+ALT+t
+			
+		2. Open a new tab in the existing terminal window.
+			Press CTRL+SHIFT+t
+			
+		3. Clear the screen.
+			Press CTRL+l or type clear and enter.
+			
+		4. Cache console output.
+			$ script my.terminal.session
+			
+			

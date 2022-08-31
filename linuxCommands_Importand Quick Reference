@@ -1,0 +1,67 @@
+6. Some Important Terminal Commands for Quick Reference.
+	1. How to run a previous command as root?
+		$ sudo !!
+		
+	2. How to find differences between two directories?
+		$ diff -y <(ls -l ${DIR1}) <(ls -l ${DIR2})
+		
+	3. How to lock a directory.
+		$ chmod 0000 /test
+		The root user will still have access. To restore the permission, run the below command.
+		$ chmod 0755 /test
+		
+	4. Smart cd commands.
+		#To change to last working directory.
+			$ cd -
+	
+		#To return to your home directory.
+		$ cd
+		
+	5. How to replace same text in multiple files.
+		To replace the text Apple with Linux in all text files in current directory and down you can run this.
+			$ find . -name '*.txt' -print | xargs perl -pi -e's/Apple/Linux/ig' *.txt
+			
+	6. Listing files changed today.
+		Sometimes, we create a file during the day and forget what name we gave it. So here is the command to locate such files.
+			$ ls -al --time-style=+%D | grep `date +%D`
+			
+	7. Shorten long commands.	
+		Not all of us has the ability to memorize the long Linux commands. With the below command, we can assign user-friendly 			names in such cases.
+			$ alias ls="ls -al"
+			
+	8. Copy a file into multiple directories.
+		$ echo /home/dir1 /test/dir2 /prod/dir3 | xargs -n 1 cp -v /path/to/file
+		
+	9. Disable incoming ping requests.
+		To block a flood of incoming pings, do the following.
+			$ sysctl -w net.ipv4.icmp_echo_ignore_all=1
+		To turn the above setting back, run the below command.
+			$ sysctl -w net.ipv4.icmp_echo_ignore_all=0
+			
+	10. Some cool Nautilus tricks.
+
+		Press CTRL+l to open a location.
+		Use CTRL+up to open the parent directory.
+		Press arrow keys to navigate through folders.	
+		
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			

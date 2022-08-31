@@ -1,0 +1,118 @@
+4. Terminal Commands To Monitor & Manage Network.
+	4.1. The IFCONFIG and related commands.
+		The most common usage of command is to return the IP address of the system you are using. But you can also use it to 			initialize an interface, assign a new IP address and enable/disable the interface.
+		
+		
+		1. The below command will print the IP address of the current machine.
+			$ ifconfig
+			
+		2. To print the information related to a particular interface, run the following.
+			$ ifconfig eth0
+		
+		3. Assign IP address and set gateway.
+			$ ifconfig eth0 192.168.1.1 netmask 255.255.255.0
+			
+		4. Enable/disable an interface.
+			$ ifup eth0
+			$ ifdown eth0
+			
+	4.2. Some nice ping command examples.
+		It’s basically to find out whether a machine on the network or the gateway is reachable. Here are some good examples.
+		
+		1. Increase/decrease ping time interval.
+			$ ping -i 2 target
+			$ ping -i 0.1 target
+			
+		2. Check if local I/F is active.
+			$ ping 0
+			$ ping localhost
+			
+		3. Update the size of the ping packet.
+			$ ping -s 112 localhost
+			The above command changes the default packet size from 56 to 112
+			
+		4. Timeout a ping request.
+			$ ping -w 5 localhost
+			
+		5. Send X no. of packets and stop.
+			$ ping -c X IP_ADDRESS			
+			
+	4.3. The TRACEROUTE command.
+		It’s for troubleshooting the network issues. It prints the no. of hops taken to reach the target.			
+			$ traceroute ubuntu.com
+			
+			
+	4.4. The NETSTAT command.
+		This command allows a user to monitor both incoming and outgoing network connections. Most of the operating systems 		support this command. Let’s see some of its real-time applications.	
+			
+		1. Listing all TCP and UDP connections opened at a time.
+			$ netstat -a | more	
+			
+		2. List connections without resolving host, port and user name.
+			$ netstat -an			
+
+		3. Listing only TCP connections.
+			$ netstat -at			
+			
+		4. Listing only UDP connections.
+			$ netstat -au			
+
+		5. Display TCP connections in Listen state.
+			$ netstat -lt			
+			
+		6. Display UDP connections in Listen state.
+			$ netstat -lu			
+			
+		7. Display service names with PID.
+			$ netstat -tp			
+			
+		8. Print routing table summary.
+			$ netstat -r			
+
+		9. Retrieve IP address statistics.	
+			$ netstat -g			
+			
+		10. Locate all programs in Listen state.
+			$ netstat -ap | grep http
+			
+		11. Find the port of a program is using.
+			$ netstat -ap | grep ssh	
+		
+		12. Show all ports listening with process PID.
+			$ netstat -tlnp			
+
+	4.5. The dig command.
+		The full form of DIG command is domain information groper. It retrieves the DNS details like A record, CNAME, and MX 			records.			
+			$ dig www.google.com
+			
+		1. Display only MX Records.
+			$ dig -t MX ubuntu.com +noall +answer			
+			
+		2. Display only NS Records.
+			$ dig -t NS ubuntu.com +noall +answer	
+			
+	4.6. Miscellaneous network Linux commands.
+		1. Display all TCP sockets in use.
+			$ lsof -nPi tcp			
+			
+		2. Resolve IP address from the hostname.
+			$ host ubuntu.com
+			
+		3. MTR – Top like traceroute command.
+			It combines the functionality of traceroute and ping tools. It examines the connectivity between the host and the 				given target system.
+				$ mtr google.com
+						
+						
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				

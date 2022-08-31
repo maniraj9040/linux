@@ -1,0 +1,42 @@
+1. Terminal Commands To Check System Memory.
+
+	1.1. The free command.
+		It’s the most frequently used command to track memory usage on Linux.
+		$ free -m
+		The “-m” option returns the usage data in MB format.
+
+	1.2. The </proc/meminfo> command.
+		Another way to quickly check the memory consumption is by printing the command. You need root or access to run this command.
+		$ sudo cat /proc/meminfo
+
+	1.3. The <vmstat> command.
+		It reverts with the memory usage in the same way as the command does. But you need not be a root user to run this command.
+		$ vmstat -s
+		
+	1.4. The top command.
+		If you are in a situation, where the memory usage is between 90-100%. Then, you should use top command to determine the 			process responsible. Most of the time, you can verify the process consuming resources by looking at the <%CPU> or the <%MEM> 			columns in the top output.
+		$ top
+		It also allows sorting on the columns. Press (Shift+O) to select a column via field letter. For example, press “a” letter to 			sort process with PID (Process ID).
+		
+	1.5. The <htop> command.
+		It’s an extension to the top command. And it provides several other options and details along with displaying the memory 			usage.
+		$ htop
+		The top header in its output shows the CPU usage, RAM and swap statistics.
+		
+	1.6. Additional Linux commands to isolate memory issues.
+		
+		1. Print the top 10 processes consuming a lot of memory.
+			$ ps aux --sort=-resident|head -11
+			
+		2. Kill a process while running the top command.
+			Run top and press “k”. It’ll prompt you for the process ID and ask for the signal to kill. You can enter the PID of 			your choice and provide 15 as the signal value.
+			
+		3. Modify top command to print the absolute path in its output.
+			After running top, press “c” to display the processes with full path and arguments.
+
+		4. Sort “ps” output by memory usage, from high to low.
+			$ ps aux --sort -rss
+			
+		
+
+		

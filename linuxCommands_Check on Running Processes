@@ -1,0 +1,103 @@
+3. Terminal Commands To Check on Running Processes.
+
+	3.1. The ps command.
+		It’s one of the most used Linux commands which returns a preview of the running processes along with their PID, CPU/RAM 			usage, and other details.
+		
+		1. Check the Shell you are using.
+			$ ps -p $$
+			
+		2. Check the processes not owned by you.
+			$ ps aux | grep -v `whoami`
+			grep -v option inverts the selection.
+		
+		3. Remove grep command while filtering the process list.
+			$ ps aux | grep '[b]ash'
+			#Or
+			$ ps aux | grep bash | grep -v grep
+			
+		4. Display all process including params and hierarchy.
+			$ ps auxww -H
+			
+		5. List the files opened by a process.
+			$ lsof -p $PID
+		
+		6. Print the process running time since it started.
+			# ps -p -o <PID>,etime=
+			$ ps -p 1,2233 -o pid,etime=
+
+		7. Check all threads of a running process.
+			$ ps -C firefox -L -o pid,tid,pcpu,state,nlwp,args
+	
+	3.2. The kill command.
+		Use case – When you’ve to stop a process behaving intermittently and which refuses to close itself. So the kill command 			comes for rescue in such conditions. Its syntax is as follows.
+			$ kill [signal or option] PID(s)
+			
+		1. Terminate a process by ID.
+			$ kill -9 PID or kill -KILL PID
+			The “-9” flag refers to KILL signal. Some of the other signals are HUP (-1), SIGINT (-2) and TERM (15).
+			
+		3.2. The killall command.
+			Another Linux command which kills a process by name is as follows.
+				$ killall firefox
+			You can even kill multiple processes using the single command.
+				$ killall firefox soffice.bin
+			
+	3.3. The STRACE command.
+		It is one of the Linux commands which allows watching a process execution. It intercepts the system calls and signals that 		a program exercises while running.
+		
+		1. Trace a program using its PID.
+			$ strace -f -p $PID
+		
+		2. Monitor a process for any specific system call.
+			$ strace -e open touch test.txt
+			
+	3.4. The watch command.
+		Sometimes, we need to monitor a process at regular intervals. For example, tracking the progress of copying a large 		release build or folder. That’s where the watch command is useful.			
+			
+		1. Run ls command after every 1 second.
+			$ watch -n 1 ls -l
+
+		2. See the differences between previous and present output.
+			$ watch -d -n 1 free
+			You can anytime press CTRL+z to take control back from the watch command.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			

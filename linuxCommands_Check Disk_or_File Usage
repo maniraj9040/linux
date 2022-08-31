@@ -1,0 +1,81 @@
+2. Terminal Commands To Check Disk/File Usage.
+
+	2.1. The du command.
+		It’s one of the standard Linux commands to retrieve the disk usage of files and folders.
+		
+		1. If you wish to check the disk usage of a folder and its subfolder, then run the following command.
+			$ sudo du /home/techbeamers/
+			
+			It displays the output in the form of disk blocks. To print in bytes, kilo bytes, mega or Gigabytes, use the “-h” 				option with du command.
+		2. To check the total space occupied by a directory, use the “-s” option with the du command.
+			$ sudo du -sh /home/techbeamers
+			
+		3. Using “-c” switch will get the total size of the directory including the subdirectories printed at the last line. There 		   is also an “-a” flag to display the usage of all files and folders.
+		
+		4. With the “–exclude” switch, you can specify a file pattern. Then, the du command will filter the files matching the given 			   pattern.
+			$ du -ah --exclude="*.txt" /home/techbeamers
+			
+		5. Locate the biggest files in the current directory and sub-directories.
+			$ ls -lSrh
+			
+		6. Look out for the largest directories.
+			$ du -kx | egrep -v "\./.+/" | sort -n
+			
+	2.2. The df command:
+		Another Linux command to monitor disk space is df (disk free). Now, let’s see what can we do with it.
+		
+		1. Print the disk usage of all the file systems.
+			$ df -a
+			
+		2. Use a fixed memory block size.
+
+			By default, it prints memory blocks of 1K. But with the “-B” option, we can alter the default memory size.
+			$ df -B 100
+			
+		3. Style output to human readable format.
+
+			Use “-h” option, it makes the display memory in the form of gigabytes, megabytes, etc.
+			
+		4. Check the type of available file systems.
+
+			You can run the df command with “-T” option to show the type of all file systems.
+				$ df -T
+				
+			You can even exclude a file system with -x option. Or provide a type with -t option, it’ll result in displaying the 			same kind of file systems.
+				$ df -t ext2
+				#OR
+				$ df -x ext2
+		
+			
+	2.3. Additional Terminal Commands for File Management.
+		There are some other useful tips that you can use to optimizing your disk management tasks.
+
+		1. Delete files marked for deletion but not yet deleted.
+			$ lsof | grep delete
+			
+		2. Search for files more than 100 MB.
+			$ find . -size +100M
+			
+		3. Check files created within the last one week.
+			$ find . -mtime -7
+			
+		4. Remove files older than two weeks.
+			$ find *.gz -mtime +14 -type f -exec rm {} \;
+			
+		5. Monitor a log file for errors or some text.
+			$ tail -f file.log | grep -i "error"
+			
+			
+			
+			
+			
+			
+			
+			
+			
+
+
+			
+			
+			
+			
